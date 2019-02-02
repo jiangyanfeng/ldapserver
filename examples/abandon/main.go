@@ -7,7 +7,7 @@ import (
 	"syscall"
 	"time"
 
-	ldap "github.com/vjeantet/ldapserver"
+	ldap "github.com/jiangyanfeng/ldapserver"
 )
 
 func main() {
