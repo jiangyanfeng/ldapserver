@@ -22,6 +22,7 @@ type client struct {
 	mutex       sync.Mutex
 	writeDone   chan bool
 	rawData     []byte
+	data        interface{}
 }
 
 func (c *client) GetConn() net.Conn {
@@ -36,6 +37,14 @@ func (c *client) SetConn(conn net.Conn) {
 	c.rwc = conn
 	c.br = bufio.NewReader(c.rwc)
 	c.bw = bufio.NewWriter(c.rwc)
+}
+
+func (c *client) SetData(data interface{}) {
+	c.data = data
+}
+
+func (c *client) GetData() interface{} {
+	return c.data
 }
 
 func (c *client) GetMessageByID(messageID int) (*Message, bool) {
